@@ -62,7 +62,7 @@ public class MatchingBenchmark {
             Order order = engine.orderPool.borrow();
             order.type = ThreadLocalRandom.current().nextBoolean() ? OrderType.BUY_LIMIT : OrderType.SELL_LIMIT;
             order.price = 65000 + ThreadLocalRandom.current().nextInt(0, 30);
-            order.quantity = ThreadLocalRandom.current().nextInt(10, 5000);
+            order.quantity = ThreadLocalRandom.current().nextInt(30_000_000, 50_000_000);
 
             preloadQueue.offer(order);
 

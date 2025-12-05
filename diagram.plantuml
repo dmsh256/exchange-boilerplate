@@ -1,0 +1,27 @@
+@startuml
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(client, "Client")
+System_Boundary(exchange, "Exchange") {
+    Container(api, "API Gateway", "REST / WebSockets")
+    Container(biz, "Business Logic Service", "Funds/risk check, WAL")
+    Container(me, "Matching Engine")
+    Container(es, "Event Stream", "Kafka / NATS / ...")
+    ContainerDb(dbT, "Trades DB", "Postgres")
+    ContainerDb(dbB, "Balances DB", "Postgres")
+}
+
+Rel(client, api, "Place order / Cancel order / ...")
+Rel(api, biz, "Validate / Auth")
+Rel(biz, dbB, "Reserve funds")
+Rel(biz, me, "Send order")
+Rel(me, es, "Publish trades")
+Rel(es, dbT, "Persist trades")
+Rel(me, dbB, "Update balances")
+
+@enduml
+
+
+@enduml
