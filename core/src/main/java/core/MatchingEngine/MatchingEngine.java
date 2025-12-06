@@ -37,4 +37,8 @@ public class MatchingEngine {
             orderPool.release(order);
         }
     }
+
+    public void addToRingBuffer(Order order) {
+        this.ringBuffer.offer(order);
+    }
 }
