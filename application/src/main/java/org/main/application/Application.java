@@ -10,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
         "core",
         "org.main.application.controller",
         "org.main.application.service",
-        "org.main.application.config"
+        "org.main.application.config",
+        "org.main.application.component",
 })
 public class Application {
 

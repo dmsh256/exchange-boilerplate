@@ -12,6 +12,7 @@ API -> Business logic -> WAL (Chronicle queue / Kafka) -> Ring buffer -> Matchin
 - Chronicle queue: same instance but faster than Kafka. Could be replaced by Kafka later if cross-instance replication needed
 - PostgreSQL for balances: ACID, but one instance (no geo distribution required anyway)
 - Java API implementation is slower than a Go/Rust implementation, but for now I want to keep the technology stack tight
+- No LMAX Disruptor
 
 ### Available order books:
 
